@@ -21,21 +21,20 @@ class Login
 		$select->bindValue('email', $email);
 		$select->execute();
 		$usuarioDb=$select->fetch();
-
-		echo $email."<br>".$usuarioDb['password']." ".$password."<br>";
-
+		echo $usuarioDb['password']."  ".$password;
 		//if($select->num_rows>0){
 			if($usuarioDb['password']=== $password){
 				session_regenerate_id();
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['name'] = $_POST['email'];
-				$_SESSION['id'] = $id;
-				echo 'Welcome ' . $_SESSION['name'] . '!';
-				header('Location: ../Views/Home/Panel.php');
+				$_SESSION['id'] = $email;
+				header('Location: ../Views/Home/Home.php');
 			}else{
+				session_destroy();
 				header('Location: ../index.php');
 			}
 		//}else{
+		//	session_destroy();
 		//	echo 'Incorrect username!';
 		//}		
 	}

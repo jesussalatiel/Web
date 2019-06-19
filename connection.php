@@ -7,6 +7,7 @@ class DataBase{
     private function __clone(){}
     
     public static function getConnect(){
+        session_start();
         $USER_DATABASE = 'root';
         $PASSWORD_DATABASE = '';
         $SERVER = 'localhost';
