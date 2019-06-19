@@ -6,8 +6,8 @@
 		require_once('Controllers/' . $controller . '_controller.php');
 		//crea el controlador
 		switch($controller){
-			case 'User':
-				$controller= new UserController();
+			case 'Login':
+				$controller= new LoginController();
 				break; 
 			case 'Inventory':
 				$controller= new InventoryController();
@@ -28,7 +28,7 @@
 
 	//array con los controladores y sus respectivas acciones
 	$controllers= array(
-						'User'=>['index','register','update', 'delete']
+						'Login'=>['index','register','update', 'delete']
 						);
 	//verifica que el controlador enviado desde index.php esté dentro del arreglo controllers
 	if (array_key_exists($controller, $controllers)) {
@@ -37,9 +37,9 @@
 			//llama  la función call y le pasa el controlador a llamar y la acción (método) que está dentro del controlador
 			call($controller, $action);
 		}else{
-			call('User', 'err');
+			call('Login', 'err');
 		}
 	}else{// le pasa el nombre del controlador y la pagina de error
-		call('User', 'err');
+		call('Login', 'err');
 	}
 ?>

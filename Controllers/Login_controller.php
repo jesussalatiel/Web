@@ -1,44 +1,39 @@
 <?php 
-	/**
-	* Descripción: Controlador para la entidad usuario
-	*/
-	class UsuarioController
+	
+	class LoginController
 	{	
 		public function __construct(){}
 
-		public function index(){
-			//echo 'index desde UsuarioController';
-			
-			$usuarios=Usuario::all();
-			require_once('Views/Usuario/index.php');
-		}
-
-		public function register(){
-			require_once('Views/Usuario/register.php');
-		}
-
-		//guardar
-		public function save($usuario){
-			Usuario::save($usuario);
-			header('Location: ../index.php');
-		}
-
-		public function update($usuario){
-			Usuario::update($usuario);
-			header('Location: ../index.php');
-		}
-
-		public function delete($id){
+		public function access($email, $password){
 			//se está de dentro del directorio Controllers y se debe salir con ../
-			require_once('../Models/usuario.php');
-			Usuario::delete($id);
-			header('Location: ../index.php');
+			require_once("../Models/Login_model.php");
+			Login::getAccess($email, $password);
+			
+
+			//header('Location: ../index.php');
 		}
 		
 		public function error(){
 			require_once('Views/Usuario/error.php');
 		} 
 	}
+	
+	require_once('../Models/Login_model.php');
+	require_once('../connection.php');
+
+
+	if ( !isset($_POST['email'], $_POST['pass']) ) {
+		// Could not get the data that should have been sent.
+		die ('Please fill both the username and password field!');
+	}
+
+	$login = new LoginController();
+	$login->access('test@test.com', '123');
+	
+	echo $login;
+
+
+
 
 
 	//obtiene los datos del usuario desde la vista y redirecciona a UsuarioController.php

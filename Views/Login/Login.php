@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<title>Ingresar</title>
@@ -19,7 +20,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='Controllers/User_controller.php' method='post'>
+				<form class="login100-form validate-form" action='Controllers/Login_controller.php' method='post'>
 					<input type='hidden' name='action' value='delete'>
 					<span class="login100-form-title p-b-26">
 						Bienvenido
@@ -29,7 +30,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" name="email" require>
 						<span class="focus-input100" data-placeholder="Usuario"></span>
 					</div>
 
@@ -37,7 +38,7 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="pass" require>
 						<span class="focus-input100" data-placeholder="Contraseña"></span>
 					</div>
 
