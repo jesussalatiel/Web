@@ -9,18 +9,8 @@
 			case 'Login':
 				$controller= new LoginController();
 				break; 
-			case 'Inventory':
-				$controller= new InventoryController();
-				break;
-			case 'Contribution':
-				$controller= new ContributionController();
-				break;
-			case 'Customer':
-				$controller= new CustomerController();
-				break;
-			case 'Receipt':
-				$controller= new ReceiptController();
-				break;
+			case 'Home':
+				$controller = new HomeController();
 		}
 		//llama a la acción del controlador
 		$controller->{$action}();
