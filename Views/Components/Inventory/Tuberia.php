@@ -1,6 +1,6 @@
 <div class="table-responsive">
 <table class="table table-bordered">
-<caption class="text-center">Tuberia</caption>
+<caption class="text-center">Tuberia de Acero al Carbon</caption>
   <tr>
     <td rowspan="2">Medida</td>
     <td colspan="2">Diametro Exterior</td>
