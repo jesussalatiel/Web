@@ -1,0 +1,1 @@
+<img src="../../Assets/images/image.png" class="img-fluid" alt="Responsive image">

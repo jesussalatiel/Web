@@ -4,6 +4,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: ../../index.php');
 	exit();
 }
+require_once('routes.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,6 @@ if (!isset($_SESSION['loggedin'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Panel de Control</title>
-	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -22,42 +22,23 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
 <div class="container pen">
   <div class="row">
-    <div class="col-sm-12 pen">
-      <div class="page-header">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container pen">
-  <div class="row">
     <div class="col-sm-12">
 		<img src="../../Assets/images/image.png" class="rounded float-left"  height="200" width="450">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            
+          <nav class="navbar navbar-default" role="navigation">            
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="nav navbar-nav">
-                
+			
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
-                      <li><a href="#">Barra Hueca</a></li>
-                      <li><a href="#">Tuberia A/C</a></li>
-                      <li><a href="#">Barra Solida</a></li>
-					  <li><a href="#">Placa A/C</a></li>
-                      <li><a href="#">Dropdown 1</a></li>
+                      <li><a href="?controller=Inventario&action=barra_hueca"">Barra Hueca</a></li>
+                      <li><a href="?controller=Inventario&action=tuberia"">Tuberia A/C</a></li>
+                      <li><a href="?controller=Inventario&action=barra_solida"">Barra Solida</a></li>
+					            <li><a href="?controller=Inventario&action=placa"">Placa A/C</a></li>
                     </ul>
                   </li>
 
-				  <li class="dropdown">
+				        <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cotizaciones<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
                       <li><a href="#">Dropdown 1</a></li>
@@ -67,7 +48,7 @@ if (!isset($_SESSION['loggedin'])) {
                   </li>
 
                   <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
                       <li><a href="#">Dropdown 1</a></li>
                       <li><a href="#">Dropdown 2</a></li>
@@ -75,8 +56,8 @@ if (!isset($_SESSION['loggedin'])) {
                     </ul>
                   </li>
 
-				  <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facturas<b class="caret"></b></a>
+				          <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facturas<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
                       <li><a href="#">Dropdown 1</a></li>
                       <li><a href="#">Dropdown 2</a></li>
@@ -84,13 +65,34 @@ if (!isset($_SESSION['loggedin'])) {
                     </ul>
                   </li>
               </ul>
-			  <li><a href="logout.php" class="btn btn-danger navbar-btn" >Salir</a></li>
+			       <a href="logout.php" class="btn btn-danger navbar-btn" >Salir</a>
             </div><!-- /.navbar-collapse -->
         </nav>
     </div>
   </div>
 </div>
+
+<div class="container pen">
+	<div class="row">
+		<div class="col-sm-12 pen">
+			<?php
+          if(empty($controller)){
+            include('image.php');
+          }else{
+            include($view);
+        }
+			?>
+		</div>
+	</div>
+</div>
+
+<footer class="container pen text-center">
+  <p></p>
+</footer>
+
+
 <script src="Assets/js/main.js"></script>
-<?php require_once('routes.php'); ?>
+
+
 </body>
 </html>
