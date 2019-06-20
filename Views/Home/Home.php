@@ -23,7 +23,7 @@ require_once('routes.php');
 <div class="container pen">
   <div class="row">
     <div class="col-sm-12">
-		<img src="../../Assets/images/image.png" class="rounded float-left"  height="200" width="450">
+		<a href='./Home.php'><img src="../../Assets/images/image.png" class="rounded float-left"  height="200" width="450"></a>
           <nav class="navbar navbar-default" role="navigation">            
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="nav navbar-nav">
@@ -31,10 +31,10 @@ require_once('routes.php');
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
-                      <li><a href="?controller=Inventario&action=barra_hueca"">Barra Hueca</a></li>
-                      <li><a href="?controller=Inventario&action=tuberia"">Tuberia A/C</a></li>
-                      <li><a href="?controller=Inventario&action=barra_solida"">Barra Solida</a></li>
-					            <li><a href="?controller=Inventario&action=placa"">Placa A/C</a></li>
+                      <li><a href="?controller=Inventory&action=barraHueca">Barra Hueca</a></li>
+                      <li><a href="?controller=Inventory&action=tuberia">Tuberia A/C</a></li>
+                      <li><a href="?controller=Inventory&action=barraSolida">Barra Solida</a></li>
+					            <li><a href="?controller=Inventory&action=placa">Placa A/C</a></li>
                     </ul>
                   </li>
 
@@ -76,12 +76,9 @@ require_once('routes.php');
 	<div class="row">
 		<div class="col-sm-12 pen">
 			<?php
-          if(empty($controller)){
-            include('image.php');
-          }else{
             include($view);
-        }
-			?>
+            echo $word;   
+      ?>
 		</div>
 	</div>
 </div>

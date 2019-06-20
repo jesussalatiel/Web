@@ -1,3 +1,1 @@
-<?php
-echo ('Mensajes de Error'); 
-?>
+<h1>Error</h1>
