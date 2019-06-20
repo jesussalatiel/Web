@@ -15,7 +15,7 @@
 		} 
 	}
 	
-	$login = new LoginController;
+	$login = new LoginController();
 	require_once('../Models/Login_model.php');
 	require_once('../connection.php');
 	

@@ -17,13 +17,12 @@ class Login
 	//la función para obtener un usuario por el id
 	public static function getAccess($email, $password){
 		$db=DataBase::getConnect();
-		$select=$db->prepare("SELECT id, password FROM accounts WHERE email = :email");
+		$select=$db->prepare("SELECT id, pass FROM Cuentas WHERE email = :email");
 		$select->bindValue('email', $email);
 		$select->execute();
 		$usuarioDb=$select->fetch();
-		echo $usuarioDb['password']."  ".$password;
 		//if($select->num_rows>0){
-			if($usuarioDb['password']=== $password){
+			if($usuarioDb['pass']=== $password){
 				session_regenerate_id();
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['name'] = $_POST['email'];
@@ -33,10 +32,6 @@ class Login
 				session_destroy();
 				header('Location: ../index.php');
 			}
-		//}else{
-		//	session_destroy();
-		//	echo 'Incorrect username!';
-		//}		
 	}
 }
 ?>

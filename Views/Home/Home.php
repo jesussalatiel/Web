@@ -29,7 +29,7 @@ require_once('routes.php');
               <ul class="nav navbar-nav">
 			
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario<b class="caret"></b></a>
+                  <a href="#" class="dropdown-item" data-toggle="dropdown">Inventario<b class="caret"></b></a>
                   	<ul class="dropdown-menu">
                       <li><a href="?controller=Inventory&action=barraHueca">Barra Hueca</a></li>
                       <li><a href="?controller=Inventory&action=tuberia">Tuberia A/C</a></li>
@@ -76,8 +76,7 @@ require_once('routes.php');
 	<div class="row">
 		<div class="col-sm-12 pen">
 			<?php
-            include($view);
-            echo $word;   
+            require($view);
       ?>
 		</div>
 	</div>

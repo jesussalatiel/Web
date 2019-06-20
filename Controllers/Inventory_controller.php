@@ -1,4 +1,5 @@
 <?php
+
 class InventoryController{
     public function __construct(){}
     public function barraHueca(){
@@ -11,4 +12,7 @@ class InventoryController{
         require_once('../Views/Home/err.php');
     } 
 }
+
+$userController= new InventoryController();
+
 ?>

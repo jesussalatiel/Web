@@ -7,6 +7,7 @@
 		//crea el controlador
 		switch($controller){
 			case 'Inventory':
+				require_once('../../Models/Home_model.php');
 				$controller = new InventoryController();
 			break;
 						    
