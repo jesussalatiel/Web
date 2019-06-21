@@ -1,3 +1,8 @@
+<?php
+require_once('../../Models/TuberiaAC_model.php');
+require_once('../../connection.php');
+$data = TuberiaAC::all();
+?>
 <div class="table-responsive">
 <table class="table table-bordered">
 <caption class="text-center">Tuberia de Acero al Carbon</caption>
@@ -22,21 +27,22 @@
     <td>mm</td>
 	
   </tr>
+  <?php foreach ($data as $data) { ?>
   <tr>
-    <td>1.000€</td>
-    <td>700€</td>
-    <td>1.100€</td>
-    <td>580€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
-	<td>1.000€</td>
+	<td><?php echo $data->medida;?></td>
+	<td><?php echo $data->diametro_ex_pulgadas;?></td>
+	<td><?php echo $data->diametro_ex_milimetros;?></td>
+	<td><?php echo $data->cedula;?></td>
+	<td><?php echo $data->pared_pulgadas;?></td>
+	<td><?php echo $data->pared_milimetros;?></td>
+	<td><?php echo $data->diametro_in_pulgadas;?></td>
+	<td><?php echo $data->diametro_in_milimetros;?></td>
+	<td><?php echo $data->kg;?></td>
+	<td><?php echo $data->peso;?></td>
+	<td><?php echo $data->total;?></td>
+	<td><?php echo $data->piezas;?></td>
+	<td><?php echo $data->longitud;?></td>
   </tr>
- 
+  <?php } ?>
 </table>
 </div>

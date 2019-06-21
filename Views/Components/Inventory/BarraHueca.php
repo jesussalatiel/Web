@@ -1,7 +1,7 @@
 <?php
-require_once('../../Models/Home_model.php');
+require_once('../../Models/BarraHueca_model.php');
 require_once('../../connection.php');
-$data = Home::all();
+$data = BarraHueca::all();
 ?>
 
 <div class="table-responsive">
@@ -19,20 +19,21 @@ $data = Home::all();
   <tr>
     <td>Exterior</td>
     <td>Interior</td>
-    <td>mm</td>
-    <td>in</td>
+    <td>Milimetros</td>
+    <td>Pulgadas</td>
   </tr>
   <?php foreach ($data as $data) { ?>
   <tr>
-    <td><?php echo $data->id;?></td>
-    <td><?php echo $data->medida;?></td>
-    <td><?php echo $data->pared;?></td>
+    <td><?php echo $data->medida_exterior;?></td>
+    <td><?php echo $data->medida_interior;?></td>
+    <td><?php echo $data->pared_milimetros;?></td>
+    <td><?php echo $data->pared_pulgadas;?></td>
     <td><?php echo $data->kg;?></td>
     <td><?php echo $data->peso;?></td>
     <td><?php echo $data->total;?></td>
     <td><?php echo $data->piezas;?></td>
     <td><?php echo $data->longitud;?></td>
-    <td><?php echo $data->id;?></td>	
+    	
   </tr>
   <?php } ?>
 </table>
