@@ -1,3 +1,4 @@
+DROP DATABASE mvc;
 CREATE DATABASE IF NOT EXISTS mvc;
 USE mvc;
 
@@ -9,57 +10,44 @@ CREATE TABLE IF NOT EXISTS `mvc`.`Cuentas` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `mvc`.`Medida` (
-  `id_medida` INT NOT NULL AUTO_INCREMENT,
-  `exterior` INT NOT NULL,
-  `interior` INT NOT NULL,
-  PRIMARY KEY (`id_medida`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Pared`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mvc`.`Pared` (
-  `id_pared` INT NOT NULL AUTO_INCREMENT,
-  `milimetros` INT NOT NULL,
-  `pulgadas` INT NOT NULL,
-  PRIMARY KEY (`id_pared`))
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`BarraHueca`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mvc`.`BarraHueca` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `fk_medida` INT NOT NULL,
-  `fk_pared` INT NOT NULL,
-  `kg` INT NOT NULL,
-  `peso` INT NOT NULL,
-  `total` INT NOT NULL,
+  `medida_exterior` DOUBLE NOT NULL,
+  `medida_interior` DOUBLE NOT NULL,
+  `pared_milimetros` DOUBLE NOT NULL,
+  `pared_pulgadas` DOUBLE NOT NULL,
+  `kg` DOUBLE NOT NULL,
+  `peso` DOUBLE NOT NULL,
+  `total` DOUBLE NOT NULL,
   `piezas` INT NOT NULL,
   `longitud` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_medida`
-    FOREIGN KEY (`fk_medida`)
-    REFERENCES `mvc`.`Medida` (`id_medida`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_pared`
-    FOREIGN KEY (`fk_pared`)
-    REFERENCES `mvc`.`Pared` (`id_pared`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `mvc`.`TuberiaAC` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `medida` DOUBLE NOT NULL,
+  `diametro_ex_milimetros` DOUBLE NOT NULL,
+  `diametro_ex_pulgadas` DOUBLE NOT NULL,
+  `cedula` DOUBLE NOT NULL,
+  `pared_pulgadas` DOUBLE NOT NULL,
+  `pared_milimetros` DOUBLE NOT NULL,
+  `diametro_in_milimetros` DOUBLE NOT NULL,
+  `diametro_in_pulgadas` DOUBLE NOT NULL,
+  `kg` DOUBLE NOT NULL,
+  `peso` DOUBLE NOT NULL,
+  `total` DOUBLE NOT NULL,
+  `piezas` INT NOT NULL,
+  `longitud` INT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 insert into Cuentas (username, pass, email) values('salatiel','juegos','jesusstartx@hotmail.com');
-insert into Medida (exterior, interior)values(1, 1);
-insert into Pared (milimetros, pulgadas)values(12, 12);
-insert into BarraHueca (fk_medida, fk_pared, kg, peso, total, piezas, longitud) values(1,1,100,345,12,123,123);
-
+insert into BarraHueca (medida_exterior, medida_interior, pared_milimetros, pared_pulgadas,kg, peso, total, piezas, longitud) values(32, 16,8, 0.345, 476.16, 19.05, 476.16, 25, 4);
+insert into TuberiaAC (medida, diametro_ex_milimetros, diametro_ex_pulgadas, cedula, pared_pulgadas, pared_milimetros, diametro_in_milimetros, diametro_in_pulgadas, kg, peso, total, piezas, longitud) values (1, 33.40, 1.315, 40, 0.133, 3.38,26.64, 1.049, 2.52, 15.09, 150.92, 10, 6);
 
 select * from BarraHueca;
-select * from Cuentas;
-select * from Medida;
-select * from Pared;
+select * from TuberiaAC;
