@@ -7,41 +7,73 @@ $data = TuberiaAC::all();
 <table class="table table-bordered">
 <caption class="text-center">Tuberia de Acero al Carbon</caption>
   <tr>
-    <td rowspan="2">Medida</td>
-    <td colspan="2">Diametro Exterior</td>
-	<td rowspan="2">Cedula</td>
-	<td colspan="2">Pared</td>
-	<td colspan="2">Diametro Interior</td>
-	<td rowspan="2">KG x M</td>
-	<td rowspan="2">Peso x Pieza</td>
-	<td rowspan="2">Peso Total</td>
-	<td rowspan="2">Piezas</td>
-	<td rowspan="2">Longitud</td>
+    <td rowspan="2" class="text-center">Medida</td>
+    <td colspan="2" class="text-center">Diametro Exterior</td>
+	<td rowspan="2" class="text-center">Cedula</td>
+	<td colspan="2" class="text-center">Pared</td>
+	<td colspan="2" class="text-center">Diametro Interior</td>
+	<td rowspan="2" class="text-center">KG x M</td>
+	<td rowspan="2" class="text-center">Peso x Pieza</td>
+	<td rowspan="2" class="text-center">Peso Total</td>
+	<td rowspan="2" class="text-center">Piezas</td>
+	<td rowspan="2" class="text-center">Longitud</td>
   </tr>
   <tr>
-    <td>in</td>
-    <td>mm</td>
-    <td>in</td>
-    <td>mm</td>
-	<td>in</td>
-    <td>mm</td>
-	
+    <td class="text-center">Pulgadas</td>
+    <td class="text-center">Milimetros</td>
+    <td class="text-center">Pulgadas</td>
+    <td class="text-center">Milimetros</td>
+	<td class="text-center">Pulgadas</td>
+    <td class="text-center">Milimetros</td>
   </tr>
   <?php foreach ($data as $data) { ?>
   <tr>
-	<td><?php echo $data->medida;?></td>
-	<td><?php echo $data->diametro_ex_pulgadas;?></td>
-	<td><?php echo $data->diametro_ex_milimetros;?></td>
-	<td><?php echo $data->cedula;?></td>
-	<td><?php echo $data->pared_pulgadas;?></td>
-	<td><?php echo $data->pared_milimetros;?></td>
-	<td><?php echo $data->diametro_in_pulgadas;?></td>
-	<td><?php echo $data->diametro_in_milimetros;?></td>
-	<td><?php echo $data->kg;?></td>
-	<td><?php echo $data->peso;?></td>
-	<td><?php echo $data->total;?></td>
-	<td><?php echo $data->piezas;?></td>
-	<td><?php echo $data->longitud;?></td>
+	<td class="text-center">
+	<select class="form-control">
+		<option value="choose">Selección</option>
+		<?php
+			$items = TuberiaAC::fillMedida();	
+			foreach($items as $item){
+				echo '<option value="'.$item.'">'.$item.'</option>';
+			}
+		?>
+
+	</select>
+	</td>
+	<td class="text-center"><?php echo $data->diametro_ex_pulgadas;?></td>
+	<td class="text-center"><?php echo $data->diametro_ex_milimetros;?></td>
+	<td class="text-center">
+	<select class="form-control" name="" form="">
+		<option value="choose">Selección</option>
+		<?php
+			$items = TuberiaAC::fillCedula();	
+			foreach($items as $item){
+				echo '<option value="'.$item.'">'.$item.'</option>';
+			}
+		?>
+	</select>
+	</td>
+	<td class="text-center">
+	<!--<?php echo $data->pared_pulgadas;?>-->
+		<input type="text" class="form-control" id="usr">
+	</td>
+	<td class="text-center">
+		<!--<?php echo $data->pared_milimetros;?>-->
+		<input type="text" class="form-control" id="usr">
+	</td>
+	<td class="text-center"><?php echo $data->diametro_in_pulgadas;?></td>
+	<td class="text-center"><?php echo $data->diametro_in_milimetros;?></td>
+	<td class="text-center"><?php echo $data->kg;?></td>
+	<td class="text-center"><?php echo $data->peso;?></td>
+	<td class="text-center"><?php echo $data->total;?></td>
+	<td class="text-center">
+		<!--<?php echo $data->piezas;?>-->
+		<input type="text" class="form-control" id="usr">
+	</td>
+	<td class="text-center">
+		<!--<?php echo $data->longitud;?>-->
+		<input type="text" class="form-control" id="usr">
+	</td>
   </tr>
   <?php } ?>
 </table>

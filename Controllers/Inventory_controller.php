@@ -8,6 +8,12 @@ class InventoryController{
     public function tuberia(){
         return "../Components/Inventory/Tuberia.php";
     }
+    public function barraSolida(){
+        
+    }
+    public function placa(){
+
+    }
     public function error(){
         require_once('../Views/Home/err.php');
     } 

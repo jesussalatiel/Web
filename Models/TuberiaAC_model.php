@@ -17,7 +17,7 @@ class TuberiaAC{
 
     function __construct($id, $medida, $diametro_ex_milimetros, $diametro_ex_pulgadas, $cedula, $pared_pulgadas, $pared_milimetros, $diametro_in_milimetros, $diametro_in_pulgadas, $kg, $peso, $total, $piezas, $longitud){
         $this->id=$id;
-        $this->medida=$medida;
+        $this->medidas=$medida;
         $this->diametro_ex_milimetros=$diametro_ex_milimetros;
         $this->diametro_ex_pulgadas=$diametro_ex_pulgadas;
         $this->cedula=$cedula;
@@ -37,11 +37,35 @@ class TuberiaAC{
 		$db=DataBase::getConnect();
 		$query = 'SELECT * FROM TuberiaAC';
 		$sql=$db->query($query);
-		foreach ($sql->fetchAll() as $items) {
+		foreach($sql->fetchAll() as $items) {
 			$lista[]= new TuberiaAC($items['id'], $items['medida'], $items['diametro_ex_milimetros'], $items['diametro_ex_pulgadas'],$items['cedula'], $items['pared_pulgadas'], $items['pared_milimetros'], $items['diametro_in_milimetros'], $items['diametro_in_pulgadas'], $items['kg'], $items['peso'], $items['total'], $items['piezas'], $items['longitud']);
 		}
 		return $lista;	
     }
-    
+
+    public static function fillMedida(){
+        $lista = [];
+		$db=DataBase::getConnect();
+		$query = 'SELECT * FROM TuberiaAC';
+        $sql=$db->query($query);
+        $i=0;
+        foreach($sql->fetchAll() as $item){
+            $lista[$i] = $item['id'];
+            $i++;
+        }
+        return $lista;
+    }
+    public static function fillCedula(){
+        $lista = [];
+		$db=DataBase::getConnect();
+		$query = 'SELECT * FROM TuberiaAC';
+        $sql=$db->query($query);
+        $i=0;
+        foreach($sql->fetchAll() as $item){
+            $lista[$i] = $item['cedula'];
+            $i++;
+        }
+        return $lista;
+    }
 }
 ?>

@@ -15,9 +15,9 @@ require_once('routes.php');
 	<title>Panel de Control</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="../../Assets/css/home.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../Assets/css/home.css">
 </head>
 <body>
 <div class="container pen">
@@ -76,7 +76,7 @@ require_once('routes.php');
 	<div class="row">
 		<div class="col-sm-12 pen">
 			<?php
-            require($view);
+          require($view);
       ?>
 		</div>
 	</div>
