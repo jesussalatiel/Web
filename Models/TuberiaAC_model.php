@@ -68,6 +68,8 @@ class TuberiaAC{
         return $lista;
     }
 
-    
+    public static function operacion($a){
+        return $a;
+    }
 }
 ?>

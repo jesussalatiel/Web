@@ -87,7 +87,7 @@ require_once('routes.php');
 </div>
 
 <footer class="container pen text-center">
-  <p></p>
+  <p>Creado por Jesus Salatiel</p>
 </footer>
 
 

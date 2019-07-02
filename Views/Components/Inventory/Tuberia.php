@@ -29,7 +29,7 @@ $data = TuberiaAC::all();
   <?php foreach ($data as $data) { ?>
   <tr>
 	<td class="text-center">
-	<select class="selectpicker show-tick form-control" title="Medida" name="medidaOption">
+	<select class="selectpicker show-tick form-control" title="Medida" id="medida">
 	<optgroup label="Medidas" data-max-options="2">
 		<?php
 			$items = TuberiaAC::fillMedida();	
@@ -38,7 +38,7 @@ $data = TuberiaAC::all();
 			}
 		?>
 	</optgroup>
-	</select>
+	</form>
 	</td>
 	<td class="text-center"><?php echo $data->diametro_ex_pulgadas;?></td>
 	<td class="text-center"><?php echo $data->diametro_ex_milimetros;?></td>
@@ -56,11 +56,11 @@ $data = TuberiaAC::all();
 	</td>
 	<td class="text-center">
 	<!--<?php echo $data->pared_pulgadas;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Pulgadas" class="form-control" id="usr">
+		<input type="number" step="0.01"  min="0" placeholder="Pulgadas" class="form-control" id="pulgadas">
 	</td>
 	<td class="text-center">
 		<!--<?php echo $data->pared_milimetros;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Milimetros" class="form-control" id="usr">
+		<input type="number" step="0.01"  min="0" placeholder="Milimetros" class="form-control" id="milimetros">
 	</td>
 	<td class="text-center"><?php echo $data->diametro_in_pulgadas;?></td>
 	<td class="text-center"><?php echo $data->diametro_in_milimetros;?></td>
@@ -69,11 +69,11 @@ $data = TuberiaAC::all();
 	<td class="text-center"><?php echo $data->total;?></td>
 	<td class="text-center">
 		<!--<?php echo $data->piezas;?>-->
-		<input type="number" step="any"  min="0" placeholder="Piezas" class="form-control" id="usr">
+		<input type="number" step="any"  min="0" placeholder="Piezas" class="form-control" id="piezas">
 	</td>
 	<td class="text-center">
 		<!--<?php echo $data->longitud;?>-->
-		<input type="number" step="any"  min="0" placeholder="Longitud" class="form-control" id="usr">
+		<input type="number" step="any"  min="0" placeholder="Longitud" class="form-control" id="longitud">
 	</td>
   </tr>
   <?php } ?>
