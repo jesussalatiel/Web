@@ -29,37 +29,38 @@ $data = TuberiaAC::all();
   <?php foreach ($data as $data) { ?>
   <tr>
 	<td class="text-center">
-	<select class="form-control">
-		<option value="choose">Selección</option>
+	<select class="selectpicker show-tick form-control" title="Medida" name="medidaOption">
+	<optgroup label="Medidas" data-max-options="2">
 		<?php
 			$items = TuberiaAC::fillMedida();	
 			foreach($items as $item){
 				echo '<option value="'.$item.'">'.$item.'</option>';
 			}
 		?>
-
+	</optgroup>
 	</select>
 	</td>
 	<td class="text-center"><?php echo $data->diametro_ex_pulgadas;?></td>
 	<td class="text-center"><?php echo $data->diametro_ex_milimetros;?></td>
 	<td class="text-center">
-	<select class="form-control" name="" form="">
-		<option value="choose">Selección</option>
+	<select class="selectpicker show-tick form-control" title="Cedula">
+	<optgroup label="Cedula" data-max-options="2">
 		<?php
 			$items = TuberiaAC::fillCedula();	
 			foreach($items as $item){
 				echo '<option value="'.$item.'">'.$item.'</option>';
 			}
 		?>
+	</optgroup>
 	</select>
 	</td>
 	<td class="text-center">
 	<!--<?php echo $data->pared_pulgadas;?>-->
-		<input type="text" class="form-control" id="usr">
+		<input type="number" step="0.01"  min="0" placeholder="Pulgadas" class="form-control" id="usr">
 	</td>
 	<td class="text-center">
 		<!--<?php echo $data->pared_milimetros;?>-->
-		<input type="text" class="form-control" id="usr">
+		<input type="number" step="0.01"  min="0" placeholder="Milimetros" class="form-control" id="usr">
 	</td>
 	<td class="text-center"><?php echo $data->diametro_in_pulgadas;?></td>
 	<td class="text-center"><?php echo $data->diametro_in_milimetros;?></td>
@@ -68,11 +69,11 @@ $data = TuberiaAC::all();
 	<td class="text-center"><?php echo $data->total;?></td>
 	<td class="text-center">
 		<!--<?php echo $data->piezas;?>-->
-		<input type="text" class="form-control" id="usr">
+		<input type="number" step="any"  min="0" placeholder="Piezas" class="form-control" id="usr">
 	</td>
 	<td class="text-center">
 		<!--<?php echo $data->longitud;?>-->
-		<input type="text" class="form-control" id="usr">
+		<input type="number" step="any"  min="0" placeholder="Longitud" class="form-control" id="usr">
 	</td>
   </tr>
   <?php } ?>
