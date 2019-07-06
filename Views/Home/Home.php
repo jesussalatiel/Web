@@ -21,6 +21,7 @@ require_once('routes.php');
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 
 </head>
 <body>
@@ -91,8 +92,7 @@ require_once('routes.php');
 </footer>
 
 
-<script src="Assets/js/main.js"></script>
-
-
+<script src="../../Assets/js/main.js"></script>
+<script src="../../Assets/js/operaciones.js"></script>
 </body>
 </html>

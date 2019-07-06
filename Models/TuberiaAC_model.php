@@ -43,33 +43,18 @@ class TuberiaAC{
 		return $lista;	
     }
 
-    public static function fillMedida(){
+    public static function fillType($type){
         $lista = [];
 		$db=DataBase::getConnect();
 		$query = 'SELECT * FROM TuberiaAC';
         $sql=$db->query($query);
         $i=0;
         foreach($sql->fetchAll() as $item){
-            $lista[$i] = $item['id'];
+            $lista[$i] = $item[$type];
             $i++;
         }
         return $lista;
     }
-    public static function fillCedula(){
-        $lista = [];
-		$db=DataBase::getConnect();
-		$query = 'SELECT * FROM TuberiaAC';
-        $sql=$db->query($query);
-        $i=0;
-        foreach($sql->fetchAll() as $item){
-            $lista[$i] = $item['cedula'];
-            $i++;
-        }
-        return $lista;
-    }
-
-    public static function operacion($a){
-        return $a;
-    }
+    
 }
 ?>

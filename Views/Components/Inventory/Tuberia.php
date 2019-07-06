@@ -4,10 +4,11 @@ require_once('../../connection.php');
 $data = TuberiaAC::all();
 ?>
 <div class="table-responsive">
-<table class="table table-bordered">
+<table class="table table-bordered" id='table'>
 <caption class="text-center">Tuberia de Acero al Carbon</caption>
-  <tr>
-    <td rowspan="2" class="text-center">Medida</td>
+<tr>
+  	<td rowspan="2" class="text-center">No.</td>
+	<td rowspan="2" class="text-center">Medida</td>
     <td colspan="2" class="text-center">Diametro Exterior</td>
 	<td rowspan="2" class="text-center">Cedula</td>
 	<td colspan="2" class="text-center">Pared</td>
@@ -17,65 +18,50 @@ $data = TuberiaAC::all();
 	<td rowspan="2" class="text-center">Peso Total</td>
 	<td rowspan="2" class="text-center">Piezas</td>
 	<td rowspan="2" class="text-center">Longitud</td>
-  </tr>
-  <tr>
-    <td class="text-center">Pulgadas</td>
-    <td class="text-center">Milimetros</td>
-    <td class="text-center">Pulgadas</td>
-    <td class="text-center">Milimetros</td>
+</tr>
+<tr>
 	<td class="text-center">Pulgadas</td>
-    <td class="text-center">Milimetros</td>
-  </tr>
-  <?php foreach ($data as $data) { ?>
-  <tr>
-	<td class="text-center">
-	<select class="selectpicker show-tick form-control" title="Medida" id="medida">
-	<optgroup label="Medidas" data-max-options="2">
-		<?php
-			$items = TuberiaAC::fillMedida();	
-			foreach($items as $item){
-				echo '<option value="'.$item.'">'.$item.'</option>';
-			}
-		?>
-	</optgroup>
-	</form>
-	</td>
-	<td class="text-center"><?php echo $data->diametro_ex_pulgadas;?></td>
-	<td class="text-center"><?php echo $data->diametro_ex_milimetros;?></td>
-	<td class="text-center">
-	<select class="selectpicker show-tick form-control" title="Cedula">
-	<optgroup label="Cedula" data-max-options="2">
-		<?php
-			$items = TuberiaAC::fillCedula();	
-			foreach($items as $item){
-				echo '<option value="'.$item.'">'.$item.'</option>';
-			}
-		?>
-	</optgroup>
-	</select>
-	</td>
-	<td class="text-center">
-	<!--<?php echo $data->pared_pulgadas;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Pulgadas" class="form-control" id="pulgadas">
-	</td>
-	<td class="text-center">
-		<!--<?php echo $data->pared_milimetros;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Milimetros" class="form-control" id="milimetros">
-	</td>
-	<td class="text-center"><?php echo $data->diametro_in_pulgadas;?></td>
-	<td class="text-center"><?php echo $data->diametro_in_milimetros;?></td>
-	<td class="text-center"><?php echo $data->kg;?></td>
-	<td class="text-center"><?php echo $data->peso;?></td>
-	<td class="text-center"><?php echo $data->total;?></td>
-	<td class="text-center">
-		<!--<?php echo $data->piezas;?>-->
-		<input type="number" step="any"  min="0" placeholder="Piezas" class="form-control" id="piezas">
-	</td>
-	<td class="text-center">
-		<!--<?php echo $data->longitud;?>-->
-		<input type="number" step="any"  min="0" placeholder="Longitud" class="form-control" id="longitud">
-	</td>
-  </tr>
-  <?php } ?>
+	<td class="text-center">Milimetros</td>
+	<td class="text-center">Pulgadas</td>
+	<td class="text-center">Milimetros</td>
+	<td class="text-center">Pulgadas</td>
+	<td class="text-center">Milimetros</td>
+</tr>
+<?php foreach ($data as $data) { ?>
+<tr>
+<td class="text-center">
+<?php echo '<input name="item" type="hidden" value="'.($data->id).'">'.($data->id).'</input>';?>
+</td>
+<td class="text-center">
+<?php
+$medidas = TuberiaAC::fillType('medida');
+echo '<select class="selectpicker show-tick form-control" id="medida_selected-'.($data->id).'">';
+foreach($medidas as $medida){
+	echo '<option value="'.$medida.'">'.$medida.'</option>';
+}	
+echo'</select>';
+?>
+</td>
+<td class="text-center">
+	<?php
+	$item = TuberiaAC::fillType('diametro_ex_pulgadas');
+	echo '<select class="selectpicker show-tick form-control" onchange="calculate()" id="in_selected-'.($data->id).'">';
+	foreach($item as $type){
+		echo '<option value="'.$type.'">'.$type.'</option>';
+	}
+	echo'</select>';
+	?>
+</td>
+
+<td>
+<?php
+	echo '<input type="text" placeholder="Milimetros" class="form-control" id="exmilimetros-'.$data->id.'" value="">';
+?>
+</td>
+
+
+</tr>
+<?php } ?>
 </table>
 </div>
+
