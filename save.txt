@@ -1,55 +1,70 @@
 <?php foreach ($data as $data) { ?>
-  <tr>
-	<td class="text-center"><?php echo '<input id="item" type="hidden" value="'.($data->id+2).'">'.($data->id+2).'</input>';?></td>
-	<td class="text-center">
-	<select class="selectpicker show-tick form-control" id="" name='opcion'>
-	<optgroup label="Medidas" data-max-options="2">
-	<?php 
-	$medidas = TuberiaAC::fillMedida();
-	foreach($medidas as $medida){
-		echo '<option value="'.$medida.'">'.$medida.'</option>';
+<tr>
+<td class="text-center">
+<?php echo '<input name="item" type="hidden" value="'.($data->id).'">'.($data->id).'</input>';?>
+</td>
+<td class="text-center">
+<?php
+$medidas = TuberiaAC::fillType('medida');
+echo '<select class="selectpicker show-tick form-control" id="medida_selected-'.($data->id).'">';
+foreach($medidas as $medida){
+	echo '<option value="'.$medida.'">'.$medida.'</option>';
+}	
+echo'</select>';
+?>
+</td>
+<td class="text-center">
+	<?php
+	$item = TuberiaAC::fillType('diametro_ex_pulgadas');
+	echo '<select class="selectpicker show-tick form-control" onchange="calculateDiametroExterior()" id="in_selected-'.($data->id).'">';
+	foreach($item as $type){
+		echo '<option value="'.$type.'">'.$type.'</option>';
 	}
-	?>	
-	</optgroup>
-	</td>
-	<td class="text-center">
-		<?php echo $data->diametro_ex_pulgadas;?>
-	</td>
-	<td class="text-center" id="mmdiametro">
-		<?php echo $data->diametro_ex_milimetros;?>
-	</td>
-	<td class="text-center">
-	<select class="selectpicker show-tick form-control" title="Cedula" ">
-	<optgroup label="Cedula" data-max-options="2">
-		<?php
-			$items = TuberiaAC::fillCedula();	
-			foreach($items as $item){
-				echo '<option value="'.$item.'">'.$item.'</option>';
-			}
-		?>
-	</optgroup>
-	</select>
-	</td>
-	<td class="text-center">
-	<!--<?php echo $data->pared_pulgadas;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Pulgadas" class="form-control" id="pulgadas">
-	</td>
-	<td class="text-center">
-		<!--<?php echo $data->pared_milimetros;?>-->
-		<input type="number" step="0.01"  min="0" placeholder="Milimetros" class="form-control" id="milimetros" onkeypress="operation(event)">
-	</td>
-	<td class="text-center"><?php echo $data->diametro_in_pulgadas;?></td>
-	<td class="text-center"><?php echo $data->diametro_in_milimetros;?></td>
-	<td class="text-center"><?php echo $data->kg;?></td>
-	<td class="text-center"><?php echo $data->peso;?></td>
-	<td class="text-center"><?php echo $data->total;?></td>
-	<td class="text-center">
-		<!--<?php echo $data->piezas;?>-->
-		<input type="number" step="any"  min="0" placeholder="Piezas" class="form-control" id="piezas">
-	</td>
-	<td class="text-center">
-		<!--<?php echo $data->longitud;?>-->
-		<input type="number" step="any"  min="0" placeholder="Longitud" class="form-control" id="longitud">
-	</td>
-  </tr>
-  <?php } ?>
+	echo'</select>';
+	?>
+</td>
+
+<td class="text-center">
+<?php
+	echo '<input  placeholder="Milimetros" type="text class="form-control" id="exmilimetros-'.$data->id.'" value="" disabled>';
+?>
+</td>
+<td class="text-center">
+<?php
+	$item = TuberiaAC::fillType('cedula');
+	echo '<select class="selectpicker show-tick form-control" id="cedula_selected-'.($data->id).'">';
+	foreach($item as $type){
+		echo '<option value="'.$type.'">'.$type.'</option>';
+	}
+	echo'</select>';
+	?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredIn-'.($data->id).'" type="number" step="0.001" min="0" placeholder="Pulgadas" value="" onkeypress="calculatePared(event)" />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Milimetros" value="" type="text" disabled />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Pulgadas" value="" type="text"  />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Milimetros" value="" type="text"  />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Kilogramos" value="" type="text"  />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Peso" value="" type="text"  />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Peso Total" value="" type="text"/>';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Piezas" value="" type="text" disabled />';?>
+</td>
+<td class="text-center">
+<?php echo '<input id="paredMm-'.($data->id).'" placeholder="Longitud" value="" type="text" disabled />';?>
+</td>
+</tr>
+<?php } ?>

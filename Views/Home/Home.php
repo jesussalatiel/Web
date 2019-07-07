@@ -93,6 +93,6 @@ require_once('routes.php');
 
 
 <script src="../../Assets/js/main.js"></script>
-<script src="../../Assets/js/operaciones.js"></script>
+<script src="../../Assets/js/tuberiaAC.js"></script>
 </body>
 </html>
